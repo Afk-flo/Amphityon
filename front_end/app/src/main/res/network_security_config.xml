@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<network-security-config>
+    <domain-config cleartextTrafficPermitted="true">
+        <domain includeSubdomains="true">https://auth-db286.hostinger.com/index.php?db=u433193930_AN</domain>
+    </domain-config>
+</network-security-config>
