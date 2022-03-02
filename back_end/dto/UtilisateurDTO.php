@@ -14,6 +14,16 @@ class UtilisateurDTO {
     private $IDENTIFIANT;
     private $MOTDEPASSE;
     private $TOKEN;
+    private $FONCTION;
+
+    public function setFonction($data) 
+    {
+        $this->FONCTION = $data;
+    }
+
+    public function getFonction() {
+        return $this->fonction;
+    }
 
     public function setToken($data) {
         $this->TOKEN = $data;
