@@ -1,16 +1,8 @@
 <?php 
-error_reporting(E_ALL);
-ini_set("display_errors", 1);
 
 require_once('../dao/UtilisateurDAO.php');
 
 // On vérifie que les données envoyées sont bonnes 
-$log = "a";
-$mpd = "a";
-
-$_POST['login'] = $log;
-$_POST['mdp'] = $mpd;
-
 if(isset($_POST['login']) && !empty($_POST['login']) && isset($_POST['mdp']) && !empty($_POST['mdp'])) {
 
 
