@@ -68,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
                 .build();
 
         Request request = new Request.Builder()
-                .url("http://127.0.0.1/Amphityon/back_end/dao/UtilisateurDAO.php")
+                .url("http://192.168.57.233/Amphityon/back_end/dao/UtilisateurDAO.php")
                 .post(formBody)
                 .build();
 
@@ -81,19 +81,18 @@ public class MainActivity extends AppCompatActivity {
                 if(responseStr.compareTo("flase")!=0){
 
                     try{
-                        JSONObject etudiant = new JSONObject(responseStr);
-                        Log.d("Test",etudiant.getString("nomEtudiant") + " est  connecté");
-                        if(etudiant.getString("statut").compareTo("prof")!=0) {
+                        JSONObject user = new JSONObject(responseStr);
+                        Log.d("Test",user.getString("NOM") + " est  connecté");
+                        if(user.getString("FONCTION").compareTo("Salle")!=0) {
                             Intent intent = new Intent(MainActivity.this, MenuChefSalle.class);
-                            intent.putExtra("etudiant", etudiant.toString());
+                            intent.putExtra("user", user.toString());
                             startActivity(intent);
                         }
-                        else {
+                        else if(user.getString("FONCTION").compareTo("Cuisine")!=0) {
                             Intent intent = new Intent(MainActivity.this, MenuChefCuisine.class);
-                            intent.putExtra("etudiant", etudiant.toString());
+                            intent.putExtra("user", user.toString());
                             startActivity(intent);
                         }
-
                     } catch (JSONException e) {
                         e.printStackTrace();
                         //Toast.makeText(MainActivity.this, "Erreur de connexion !!!! !", Toast.LENGTH_SHORT).show();
