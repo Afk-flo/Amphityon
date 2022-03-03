@@ -68,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
                 .build();
 
         Request request = new Request.Builder()
-                .url("http://192.168.57.233/Amphityon/back_end/dao/UtilisateurDAO.php")
+                .url("http://192.168.57.233/Amphityon/back_end/api/login.php")
                 .post(formBody)
                 .build();
 
@@ -78,7 +78,7 @@ public class MainActivity extends AppCompatActivity {
             public void onResponse( Call call, Response response) throws IOException {
                 responseStr = response.body().string();
                 Log.d("Test", responseStr);
-                if(responseStr.compareTo("flase")!=0){
+                if(responseStr.compareTo("false")!=0){
 
                     try{
                         JSONObject user = new JSONObject(responseStr);

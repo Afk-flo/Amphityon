@@ -9,7 +9,9 @@ public class MenuChefSalle extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_menu_chefcuisine);
+        setContentView(R.layout.activity_menu_chefsalle);
 
+
+        //final buttonLesTables = findViewById(R.id.button)Button
     }
 }
