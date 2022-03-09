@@ -68,10 +68,9 @@ public class MainActivity extends AppCompatActivity {
                 .build();
 
         Request request = new Request.Builder()
-                .url("http://192.168.57.233/Amphityon/back_end/api/login.php")
+                .url("http://176.145.64.57/Amphityon/back_end/api/login.php")
                 .post(formBody)
                 .build();
-
         Call call = client.newCall(request);
         call.enqueue(new Callback() {
             @Override
