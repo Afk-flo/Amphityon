@@ -5,26 +5,25 @@ require_once('../dao/PlatDAO.php');
 // Gestion selon le type de requêtage 
 $method = $_SERVER["REQUEST_METHOD"];
 
-
 switch($method) {
     case 'GET' :
         // Récupération de tous les plats OU plats selon IDCAT ou IDUSER 
         // Check $_GET['id']
         // Puis vérification n2 pour l'utilisateur ou la catégorie 
         if(isset($_GET['id'])) {
-            if($_GET['demande'] === "user") {
+            if(isset($_GET['demande']) && $_GET['demande'] === "user") {
                 // Si on veut avoir le choix par user 
                 $idUser = htmlspecialchars($_GET['id']);
                 $plats = PlatDAO::getAllByCuisto($idUser);
                 printf(json_encode($plats));
 
-            } else if ($_GET['demande'] === "cat") {
+            } else if (isset($_GET['demande']) &&  $_GET['demande'] === "cat") {
                 // Si on veut avoir le choix par cat 
                 $idCat = htmlspecialchars($_GET['id']);
                 $plats = PlatDAO::getAllByCat($idCat);
                 printf(json_encode($plats));
 
-            } else if ($_GET['demande'] === "both") {
+            } else if (isset($_GET['demande']) &&  $_GET['demande'] === "both") {
                 // Si on veut  avoir le choix par cat et cuisto
                 $idCat = htmlspecialchars($_GET['id']);
                 $idUser = htmlspecialchars($_GET['idUser']);
@@ -32,7 +31,9 @@ switch($method) {
                 printf(json_encode($plats));
             
             }else {
-                printf(json_encode("T'as dit quoi, j'ai pas compris là ?"));
+                $idProduit = htmlspecialchars($_GET['id']);
+                $plat = PlatDAO::getOne($idProduit);
+                printf(json_encode($plat));
             }
 
         } else {

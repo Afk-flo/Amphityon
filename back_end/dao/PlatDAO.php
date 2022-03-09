@@ -25,9 +25,6 @@ class PlatDAO {
      */
     public static function getOne(int $id) : ?array {
         $req = bdd::getInstance()->prepare("SELECT * FROM PLAT WHERE idPlat = ?");
-
-        // SQL POUR ACCES USER ET CAT SERONT NECESSAIRES
-
         $req->execute(array($id));
         $req->setFetchMode(PDO::FETCH_ASSOC);
         $plat = $req->fetch();
