@@ -24,7 +24,7 @@ class UtilisateurDAO {
     public static function getOne(string $token) : ?array {
         $req = bdd::getInstance()->prepare("SELECT * FROM UTILISATEUR WHERE TOKEN = ?");
         $req->execute(array($token));
-       $req->setFetchMode(PDO::FETCH_ASSOC);
+        $req->setFetchMode(PDO::FETCH_ASSOC);
         $user = $req->fetch();
        // var_dump($user);
         return $user;

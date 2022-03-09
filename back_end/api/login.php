@@ -2,6 +2,7 @@
 
 require_once('../dao/UtilisateurDAO.php');
 
+
 // On vérifie que les données envoyées sont bonnes 
 if(isset($_POST['login']) && !empty($_POST['login']) && isset($_POST['mdp']) && !empty($_POST['mdp'])) {
 
