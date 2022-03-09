@@ -8,51 +8,51 @@
 
 class PlatDTO {
 
-    private $idPlat;
-    private $nomPlat;
-    private $descriptif;
+    private $IDPLAT;
+    private $NOMPLAT;
+    private $DESCRIPTIF;
     // PK
-    private $idCat;
-    private $idUser;
+    private $IDCAT;
+    private $IDUSER;
 
     public function getIdCat() {
-        return $this->idCat;
+        return $this->IDCAT;
     }
 
     public function getIdUser() {
-        return $this->idUser;
+        return $this->IDUSER;
     }
 
     public function setIdCat($data) {
-        $this->idCat = $data;
+        $this->IDCAT = $data;
     }
 
     public function setIdUser($data) {
-        $this->idUser = $data;
+        $this->IDUSER = $data;
     }
 
     public function getId() {
-        return $this->id;
+        return $this->IDPLAT;
     }
 
     public function getNomPlat() {
-        return $this->nomPlat;
+        return $this->NOMPLAT;
     }
 
     public function getDescriptif() {
-        return $this->getDescriptif;
+        return $this->DESCRIPTIF;
     }
 
     public function setId($data) {
-        $this->id = $data;
+        $this->IDPLAT = $data;
     }
 
     public function setNomPlat($data) {
-        $this->nomPlat = $data;
+        $this->NOMPLAT = $data;
     }
 
     public function setDescriptif($data) {
-        $this->descriptif = $data;
+        $this->DESCRIPTIF = $data;
     }
 
 }
