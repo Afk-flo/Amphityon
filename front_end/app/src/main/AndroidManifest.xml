@@ -13,6 +13,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Amphy">
         <activity
+            android:name=".Menu_ChoixService"
+            android:exported="false" />
+        <activity
             android:name=".Menu_Table"
             android:exported="false" />
         <activity
