@@ -39,7 +39,8 @@ class UtilisateurDAO {
      * 
      */
     public static function getAllByCat(string $token, string $fonction) : ?array {
-
+        $array = [];
+        return $array;
     }
 
     /**

@@ -2,7 +2,7 @@
 
 require_once('../dto/UtilisateurDTO.php');
 require_once('../dto/PlatDTO.php');
-require_once('../dto/CategorieDTO.php');
+// require_once('../dto/CategorieDTO.php');
 require_once('bdd.php');
 
 
@@ -25,9 +25,6 @@ class PlatDAO {
      */
     public static function getOne(int $id) : ?array {
         $req = bdd::getInstance()->prepare("SELECT * FROM PLAT WHERE idPlat = ?");
-
-        // SQL POUR ACCES USER ET CAT SERONT NECESSAIRES
-
         $req->execute(array($id));
         $req->setFetchMode(PDO::FETCH_ASSOC);
         $plat = $req->fetch();
@@ -43,7 +40,7 @@ class PlatDAO {
         $req = bdd::getInstance()->prepare("SELECT * FROM PLAT");
         $req->execute(array());
         $req->setFetchMode(PDO::FETCH_ASSOC);
-        $plat = $req->fetch();
+        $plat = $req->fetchAll();
         return $plat;
     }
 
@@ -54,10 +51,10 @@ class PlatDAO {
      * @return PlatDTO[]|null -- plat ou nul si jamais 
      */
     public static function getAllByCuisto($idCuisinier) : ?array {
-        $req = bdd::getInstance()->prepare("SELECT * FROM PLAT INNER JOIN CUISINIER AS C ON PLAT.IDUSER = C.IDUSER WHERE PLAT.IDUSER = ? ");
-        $req->execute(array($idCuisinierd));
+        $req = bdd::getInstance()->prepare("SELECT NOMPLAT, DESCRIPTIF FROM PLAT INNER JOIN UTILISATEUR AS C ON PLAT.IDUSER = C.IDUSER WHERE PLAT.IDUSER = ? ");
+        $req->execute(array($idCuisinier));
         $req->setFetchMode(PDO::FETCH_ASSOC);
-        $plat = $req->fetch();
+        $plat = $req->fetchAll();
         return $plat;
     }
 
@@ -69,10 +66,10 @@ class PlatDAO {
      * @return PlatDTO[]|null -- plat ou nul si jamais 
      */
     public static function getAllByCat($idCategorie) : ?array {
-        $req = bdd::getInstance()->prepare("SELECT * FROM PLAT INNER JOIN CATEGORIE AS C ON PLAT.IDCAT = C.IDCAT WHERE PLAT.IDCAT = ?");
+        $req = bdd::getInstance()->prepare("SELECT NOMPLAT, DESCRIPTIF, LIBELLE FROM PLAT INNER JOIN CATEGORIES AS C ON PLAT.IDCAT = C.IDCAT WHERE PLAT.IDCAT = ?");
         $req->execute(array($idCategorie));
         $req->setFetchMode(PDO::FETCH_ASSOC);
-        $plat = $req->fetch();
+        $plat = $req->fetchAll();
         return $plat;
     }
 
@@ -84,10 +81,10 @@ class PlatDAO {
      * @return PlatDTO[]|null -- plat ou nul si jamais 
      */
     public static function getAllByCuistoAndCat($idCategorie, $idUser) : ?array {
-        $req = bdd::getInstance()->prepare("SELECT * FROM PLAT INNER JOIN CATEGORIE AS C ON PLAT.IDCAT = C.IDCAT INNER JOIN CUISINIER AS CUI ON PLAT.IDUSER = CUI.IDUSER WHERE PLAT.IDUSER = ? AND PLAT.IDCAT = ?");
+        $req = bdd::getInstance()->prepare("SELECT NOMPLAT, DESCRIPTIF, LIBELLE, NOM, PRENOM  FROM PLAT INNER JOIN CATEGORIES AS C ON PLAT.IDCAT = C.IDCAT INNER JOIN UTILISATEUR AS CUI ON PLAT.IDUSER = CUI.IDUSER WHERE PLAT.IDUSER = ? AND PLAT.IDCAT = ?");
         $req->execute(array($idUser, $idCategorie));
         $req->setFetchMode(PDO::FETCH_ASSOC);
-        $plat = $req->fetch();
+        $plat = $req->fetchAll();
         return $plat;
     }
 
@@ -121,6 +118,20 @@ class PlatDAO {
         $sql = "UPDATE PLAT SET IDPLAT = ?, IDCAT = ?, IDUSER = ?, NOMPLAT = ?, DESCRIPTIF = ?";
         $req = bdd::getInstance()->prepare($sql);
         $req->execute(array($plat->getId(), $plat->getIdCat(), $plat->getIdUser(), $plat->getNomPlat(), $plat->getDescriptif()));
+    }
+
+    // REMOVE 
+
+    /**
+     * Fonction permettant de supprimer les plats (trop long = pas bon)
+     * 
+     * @param $idPlat -- l'id du plat qu'on va couic 
+     * @return void - mouais
+     */
+    public static function delete($idPlat) : void {
+        $sql = "DELETE FROM PLAT WHERE IDPLAT = ?";
+        $req = bdd::getInstance()->prepare($sql);
+        $req->execute(array($idPlat));
     }
 
 
