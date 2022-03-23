@@ -4,15 +4,14 @@ require_once('../dao/TableDAO.php');
 
 $method = $_SERVER["REQUEST_METHOD"];
 
-switch($method){
+switch ($method) {
     case 'GET':
-        if(isset($_GET['idService'])){
-            if(isset($_GET['demande']) && $_GET['demande'] == "service"){
+        if (isset($_GET['idService'])) {
+            if (isset($_GET['demande']) && $_GET['demande'] == "service") {
                 $idService = $_GET['idService'];
                 $tables = TableDAO::getAllTables($_GET['idService']);
                 printf(json_encode($tables));
-            }
-            else if($_GET['demande'] && $_GET['demande'] == "idtable"){
+            } else if ($_GET['demande'] && $_GET['demande'] == "idtable") {
                 $idtable = htmlspecialchars($_GET['idtable']);
                 $uneTable = TableDAO::getUneTable($idtable);
                 printf(json_encode($uneTable));
@@ -20,7 +19,7 @@ switch($method){
         }
         break;
     case 'POST':
-        if(!empty($_POST)){
+        if (!empty($_POST)) {
             $table = new TableDTO();
             $table->setIdUser($_POST['idUser']);
             $table->setDate($_POST['date']);
@@ -31,16 +30,15 @@ switch($method){
             TableDAO::ajoutTable($table);
             printf(json_encode("La commande de la 5 !!!"));
 
-        }
-        else{
+        } else {
             printf(json_encode("En attend toujourd, bon ils sont partis!"));
         }
         break;
 
     case 'PUT':
-        parse_str(file_get_contents("php://input"),$uneTable);
+        parse_str(file_get_contents("php://input"), $uneTable);
 
-        if(isset($table['idTable']) && !empty($plat['idTable'])){
+        if (isset($table['idTable']) && !empty($plat['idTable'])) {
             $newTable = new TableDTO();
             $newTable->setNumTable(htmlspecialchars($newTable['idTable']));
             $newTable->setNbConvive(htmlspecialchars($newTable['nbConvive']));
@@ -50,17 +48,15 @@ switch($method){
 
             TableDAO::majTable($newTable);
             print(json_encode("une nouvelle table pour les touristes!"));
-        }
-
-        else{
+        } else {
             printf(json_encode("Votre table n'a pas pu etre à jour! try again !!!"));
         }
         break;
 
     case 'DELETE':
-        parse_str(file_get_contents("php://input"),$table);
+        parse_str(file_get_contents("php://input"), $table);
 
-        if(!empty($table['idTable'])){
+        if (!empty($table['idTable'])) {
             TableDAO::suppTable(htmlspecialchars($table['idTable']));
         }
 }
