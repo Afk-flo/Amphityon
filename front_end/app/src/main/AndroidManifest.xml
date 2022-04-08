@@ -13,6 +13,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Amphy">
         <activity
+            android:name=".PlatUnique"
+            android:exported="false" />
+        <activity
             android:name=".Service"
             android:exported="false" />
         <activity
