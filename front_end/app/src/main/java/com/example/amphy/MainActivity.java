@@ -68,9 +68,10 @@ public class MainActivity extends AppCompatActivity {
                 .build();
 
         Request request = new Request.Builder()
-                .url("http://176.145.64.57/Amphityon/back_end/api/login.php")
+                .url("http://192.168.56.1/Amphityon/back_end/api/login.php")
                 .post(formBody)
                 .build();
+
         Call call = client.newCall(request);
         call.enqueue(new Callback() {
             @Override
@@ -82,12 +83,13 @@ public class MainActivity extends AppCompatActivity {
                     try{
                         JSONObject user = new JSONObject(responseStr);
                         Log.d("Test",user.getString("NOM") + " est  connecté");
-                        if(user.getString("FONCTION").compareTo("Salle")!=0) {
+                        Log.d("AZDJOAZDJZDADAZDKLAZD", user.getString("FONCTION"));
+                        if(user.getString("FONCTION").equals("SALLE")) {
                             Intent intent = new Intent(MainActivity.this, MenuChefSalle.class);
                             intent.putExtra("user", user.toString());
                             startActivity(intent);
                         }
-                        else if(user.getString("FONCTION").compareTo("Cuisine")!=0) {
+                        else if(user.getString("FONCTION").equals("CUISINE")) {
                             Intent intent = new Intent(MainActivity.this, MenuChefCuisine.class);
                             intent.putExtra("user", user.toString());
                             startActivity(intent);
