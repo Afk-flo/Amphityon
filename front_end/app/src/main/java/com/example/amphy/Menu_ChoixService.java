@@ -2,12 +2,16 @@ package com.example.amphy;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class Menu_ChoixService extends AppCompatActivity {
 
@@ -21,7 +25,7 @@ public class Menu_ChoixService extends AppCompatActivity {
         boutonValider.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                int service=0;
+                int idService = 0;
                 String option = "";
                 RadioGroup radioGroup = (RadioGroup) findViewById(R.id.radioGroup);
                 int selectedId = radioGroup.getCheckedRadioButtonId();
@@ -29,19 +33,24 @@ public class Menu_ChoixService extends AppCompatActivity {
                     RadioButton radioButtonOptionSelected = findViewById(selectedId);
                     option = radioButtonOptionSelected.getText().toString();
                     if(option.equals("Midi")) {
-                        service = 1;
+                        idService = 1;
                     }
                     else {
-                        service = 2;
+                        idService = 2;
                     }
                 }
 
 
-
-
                 Intent intent = new Intent (Menu_ChoixService.this, MenuChefSalle.class);
-                intent.putExtra("service",service);
+                intent.putExtra("idService",idService);
+                try {
+                    JSONObject user = new JSONObject(getIntent().getStringExtra("user"));
+                    intent.putExtra("user", user.toString());
 
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                startActivity(intent);
             }
         });
     }

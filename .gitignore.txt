@@ -1,0 +1,16 @@
+#dossier à ignorier
+.idea/
+.gen/
+front_end/.idea/
+front_end/gradle/
+front_end/app/build/
+front_end/app/src/main/res/xml/
+
+#fichier à ignorer
+gradle.properties
+gradleew.properties
+local.properties
+README.txt
+settings.gradle
+front_end/app/build.gradle
+front_end/app/src/main/res/network_security_config

@@ -27,13 +27,14 @@ import okhttp3.Response;
 public class MainActivity extends AppCompatActivity {
     String responseStr;
     OkHttpClient client = new OkHttpClient();
+    int id = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        final Button buttonValiderAuthentification = (Button)findViewById(R.id.buttonValiderAuthentification);
+        final Button buttonValiderAuthentification = findViewById(R.id.buttonValiderAuthentification);
         buttonValiderAuthentification.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -68,9 +69,10 @@ public class MainActivity extends AppCompatActivity {
                 .build();
 
         Request request = new Request.Builder()
-                .url("http://176.145.64.57/Amphityon/back_end/api/login.php")
+                .url("http://192.168.1.94/apjy2/Amphityon/back_end/api/login.php")
                 .post(formBody)
                 .build();
+
         Call call = client.newCall(request);
         call.enqueue(new Callback() {
             @Override
@@ -82,19 +84,18 @@ public class MainActivity extends AppCompatActivity {
                     try{
                         JSONObject user = new JSONObject(responseStr);
                         Log.d("Test",user.getString("NOM") + " est  connecté");
-                        if(user.getString("FONCTION").compareTo("Salle")!=0) {
-                            Intent intent = new Intent(MainActivity.this, MenuChefSalle.class);
+                        if(user.getString("FONCTION").equals("SALLE")) {
+                            Intent intent = new Intent(MainActivity.this, Menu_ChoixService.class);
                             intent.putExtra("user", user.toString());
                             startActivity(intent);
                         }
-                        else if(user.getString("FONCTION").compareTo("Cuisine")!=0) {
+                        else if(user.getString("FONCTION").equals("CUISINE")) {
                             Intent intent = new Intent(MainActivity.this, MenuChefCuisine.class);
                             intent.putExtra("user", user.toString());
                             startActivity(intent);
                         }
                     } catch (JSONException e) {
                         e.printStackTrace();
-                        //Toast.makeText(MainActivity.this, "Erreur de connexion !!!! !", Toast.LENGTH_SHORT).show();
                     }
                 }
                 else {

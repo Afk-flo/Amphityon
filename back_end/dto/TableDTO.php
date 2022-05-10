@@ -7,9 +7,8 @@
 
 class TableDTO{
     private $idService;
-    private $date;
     private $numTable;
-    private $idUser;
+    private $date;
     private $nbConvive;
 
     public function getIdService()
@@ -20,16 +19,6 @@ class TableDTO{
     public function setIdService($idService): void
     {
         $this->idService = $idService;
-    }
-
-    public function setIdUser($idUser): void
-    {
-        $this->idUser = $idUser;
-    }
-
-    public function getIdUser()
-    {
-        return $this->idUser;
     }
 
     public function getDate()
