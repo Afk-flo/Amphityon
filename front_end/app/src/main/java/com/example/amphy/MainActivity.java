@@ -69,7 +69,11 @@ public class MainActivity extends AppCompatActivity {
                 .build();
 
         Request request = new Request.Builder()
+<<<<<<< HEAD
                 .url("http://192.168.1.94/apjy2/Amphityon/back_end/api/login.php")
+=======
+                .url("http://192.168.56.1/Amphityon/back_end/api/login.php")
+>>>>>>> main
                 .post(formBody)
                 .build();
 
@@ -84,8 +88,14 @@ public class MainActivity extends AppCompatActivity {
                     try{
                         JSONObject user = new JSONObject(responseStr);
                         Log.d("Test",user.getString("NOM") + " est  connecté");
+<<<<<<< HEAD
                         if(user.getString("FONCTION").equals("SALLE")) {
                             Intent intent = new Intent(MainActivity.this, Menu_ChoixService.class);
+=======
+                        Log.d("AZDJOAZDJZDADAZDKLAZD", user.getString("FONCTION"));
+                        if(user.getString("FONCTION").equals("SALLE")) {
+                            Intent intent = new Intent(MainActivity.this, MenuChefSalle.class);
+>>>>>>> main
                             intent.putExtra("user", user.toString());
                             startActivity(intent);
                         }

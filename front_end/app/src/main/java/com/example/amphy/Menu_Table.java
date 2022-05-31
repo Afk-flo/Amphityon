@@ -34,6 +34,7 @@ public class Menu_Table extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_table);
+<<<<<<< HEAD
         int idService=0;
         idService = getIntent().getIntExtra("idService",idService);
         int finalIdService = idService;
@@ -73,6 +74,10 @@ public class Menu_Table extends AppCompatActivity {
             e.printStackTrace();
             Log.d("test",e.getMessage());
         }
+=======
+
+
+>>>>>>> main
     }
 
     public void listeTables(int unService) throws IOException {

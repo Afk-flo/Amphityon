@@ -13,6 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Amphy">
         <activity
+<<<<<<< HEAD
             android:name=".AjoutAffectation"
             android:exported="false" />
         <activity
@@ -26,6 +27,18 @@
             android:exported="false" />
         <activity
             android:name=".AfficheTable"
+=======
+            android:name=".PlatUnique"
+            android:exported="false" />
+        <activity
+            android:name=".Service"
+            android:exported="false" />
+        <activity
+            android:name=".AccessPlat"
+            android:exported="false" />
+        <activity
+            android:name=".Plats"
+>>>>>>> main
             android:exported="false" />
         <activity
             android:name=".Menu_Table"
