@@ -22,7 +22,7 @@ public class MenuChefSalle extends AppCompatActivity {
 
         final Button btnLesTables = findViewById(R.id.btnTable);
         final Button btnServeur = findViewById(R.id.btnServeur);
-        final Button btnAffect = findViewById(R.id.btnAffect);
+        final Button btnAffect = findViewById(R.id.btnQuitter);
 
         int finalService = idService;
         btnLesTables.setOnClickListener(new View.OnClickListener() {
@@ -46,7 +46,16 @@ public class MenuChefSalle extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MenuChefSalle.this, ListeAffectation.class);
+                intent.putExtra("demande","table");
                 intent.putExtra("idService", finalService);
+                try {
+                    JSONObject user = new JSONObject(getIntent().getStringExtra("user"));
+                    intent.putExtra("user", user.toString());
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                startActivity(intent);
             }
         });
 
@@ -56,6 +65,14 @@ public class MenuChefSalle extends AppCompatActivity {
                 Intent intent = new Intent(MenuChefSalle.this, AfficheTable.class);
                 intent.putExtra("idService", finalService);
                 startActivity(intent);
+            }
+        });
+
+        final Button btnQuitter = (Button)findViewById(R.id.btnQuitter);
+        btnQuitter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MenuChefSalle.this.finish();
             }
         });
 

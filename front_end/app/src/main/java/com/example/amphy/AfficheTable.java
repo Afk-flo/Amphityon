@@ -54,8 +54,8 @@ public class AfficheTable extends AppCompatActivity {
             editTextDate.setText(table.getString("DATE1"));
             editTextIdTable.setText(table.getString("NUMTABLE"));
 
-            final Button buttonValiderMesInfos = findViewById(R.id.btnEnregistrer);
-            buttonValiderMesInfos.setOnClickListener(new View.OnClickListener() {
+            final Button btnQuitter = findViewById(R.id.btnEnregistrer);
+            btnQuitter.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     try {
@@ -73,6 +73,8 @@ public class AfficheTable extends AppCompatActivity {
                 public void onClick(View v) {
                     try {
                         suppTable();
+                        Intent intent = new Intent(AfficheTable.this, Menu_Table.class);
+                        startActivity(intent);
                     } catch (IOException e) {
                         e.printStackTrace() ;
                     }

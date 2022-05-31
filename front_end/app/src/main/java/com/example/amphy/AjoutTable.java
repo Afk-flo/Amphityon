@@ -2,6 +2,7 @@ package com.example.amphy;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -41,9 +42,19 @@ public class AjoutTable extends AppCompatActivity {
                 public void onClick(View v) {
                     try {
                         ajoutTable();
+                        Intent intent = new Intent(AjoutTable.this, Menu_Table.class);
+                        startActivity(intent);
                     } catch (IOException | JSONException e) {
                         e.printStackTrace() ;
                     }
+                }
+            });
+
+            final Button btnQuitter = (Button)findViewById(R.id.btnQuitter);
+            btnQuitter.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    AjoutTable.this.finish();
                 }
             });
         }

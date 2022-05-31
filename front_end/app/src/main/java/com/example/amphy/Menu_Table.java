@@ -28,6 +28,7 @@ import okhttp3.RequestBody;
 import okhttp3.Response;
 
 public class Menu_Table extends AppCompatActivity {
+    JSONObject user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,9 +36,6 @@ public class Menu_Table extends AppCompatActivity {
         setContentView(R.layout.activity_menu_table);
         int idService=0;
         idService = getIntent().getIntExtra("idService",idService);
-
-        JSONObject user;
-
         int finalIdService = idService;
 
         Button btnAjout = findViewById(R.id.btnAjoutTable);
@@ -55,6 +53,14 @@ public class Menu_Table extends AppCompatActivity {
                     e.printStackTrace();
                 }
                 startActivity(intent);
+            }
+        });
+
+        final Button btnQuitter = (Button)findViewById(R.id.btnQuitter);
+        btnQuitter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Menu_Table.this.finish();
             }
         });
 

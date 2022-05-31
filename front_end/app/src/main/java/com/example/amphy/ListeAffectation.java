@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 
 import org.json.JSONArray;
@@ -27,39 +28,65 @@ import okhttp3.RequestBody;
 import okhttp3.Response;
 
 public class ListeAffectation extends AppCompatActivity {
+    JSONObject user = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_liste_affectation);
-
         int idService=0;
-
         idService = getIntent().getIntExtra("idService",idService);
+
+        int finalIdService = idService;
+
+        Button btnAjout = findViewById(R.id.btnAjoutAffect);
+        btnAjout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ListeAffectation.this, AjoutAffectation.class);
+                intent.putExtra("idService", finalIdService);
+                try {
+                    JSONObject user = new JSONObject(getIntent().getStringExtra("user"));
+                    intent.putExtra("user", user.toString());
+                    Log.d("",user.toString());
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                startActivity(intent);
+            }
+        });
+
+        final Button btnQuitter = (Button)findViewById(R.id.btnQuitter);
+        btnQuitter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ListeAffectation.this.finish();
+            }
+        });
+
 
         try {
             Log.d("test","coucou");
-            String unService = String.valueOf(idService);
-            listeAffectation(unService);;
-        } catch (IOException e) {
+            listeAffect(idService);
+        }
+        catch (IOException e) {
             e.printStackTrace();
             Log.d("test",e.getMessage());
-
         }
     }
 
-    public void listeAffectation(String unService) throws IOException {
+    public void listeAffect(int unService) throws IOException {
         OkHttpClient client = new OkHttpClient();
-        ArrayList listAffect = new ArrayList<String>();
-
+        ArrayList listAffectation = new ArrayList<String>();
         RequestBody formBody = new FormBody.Builder()
-                .add("RequestMethod","POST")
-                .add("demande","affectations")
-                .add("idService", unService)
+                .add("REQUEST_METHOD","POST")
+                .add("demande","lesAffectations")
+                .add("idService", String.valueOf(unService))
                 .build();
 
         Request request = new Request.Builder()
-                .url("http://192.168.1.94/apjy2/Amphityon/back_end/api/affectation.php/demande")
+                .url("http://192.168.1.94/apjy2/Amphityon/back_end/api/affectation.php")
                 .post(formBody)
                 .build();
 
@@ -75,35 +102,39 @@ public class ListeAffectation extends AppCompatActivity {
                 try {
                     jsonArrayAffect = new JSONArray(responseStr);
                     for(int i=0; i<jsonArrayAffect.length();i++){
-                        JSONObject jsonTable;
-                        jsonTable = jsonArrayAffect.getJSONObject(i);
-                        listAffect.add(jsonTable.getString("IDSERVICE"));
-                        listAffect.add(jsonTable.getString("IDUSER1"));
+                        JSONObject jsonAffect;
+                        jsonAffect = jsonArrayAffect.getJSONObject(i);
+                        listAffectation.add(jsonAffect.getString("NOM"));
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
                     Log.d("test",e.getMessage());
                 }
 
+                ListView listViewAffect = findViewById(R.id.listViewServeur);
 
-
-                ListView listViewTables = findViewById(R.id.listViewTables);
-
-                ArrayAdapter<String> arrayAdapterAffect = new ArrayAdapter<String>(ListeAffectation.this, android.R.layout.simple_list_item_1, listAffect);
+                ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(ListeAffectation.this, android.R.layout.simple_list_item_1, listAffectation);
 
                 runOnUiThread(() -> {
-                    listViewTables.setAdapter(arrayAdapterAffect);
+                    listViewAffect.setAdapter(arrayAdapter);
                 });
 
                 JSONArray finalJsonArrayTables = jsonArrayAffect;
 
-                listViewTables.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                listViewAffect.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
-                    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                    public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
                         try{
-                            JSONObject uneAffect = finalJsonArrayTables.getJSONObject(i);
-                            Intent intent = new Intent(ListeAffectation.this, AfficheTable.class);
+                            int idService = 0;
+                            idService = getIntent().getIntExtra("idService",idService);
+                            JSONObject user = null;
+                            user = new JSONObject(getIntent().getStringExtra("user"));
+
+                            JSONObject uneAffect = finalJsonArrayTables.getJSONObject(position);
+                            Intent intent = new Intent(ListeAffectation.this, AfficheAffect.class);
                             intent.putExtra("uneAffect",uneAffect.toString());
+                            intent.putExtra("idService",idService);
+                            intent.putExtra("user", user.toString());
                             startActivity(intent);
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -118,4 +149,5 @@ public class ListeAffectation extends AppCompatActivity {
             }
         });
     }
+
 }

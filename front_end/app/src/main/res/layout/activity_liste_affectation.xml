@@ -19,8 +19,8 @@
 
     <ListView
         android:id="@+id/listViewServeur"
-        android:layout_width="283dp"
-        android:layout_height="455dp"
+        android:layout_width="244dp"
+        android:layout_height="361dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/titreServeur" />
@@ -29,7 +29,7 @@
         android:id="@+id/btnAjoutAffect"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:text="Quitter"
+        android:text="Ajouter"
         android:textSize="18dp"
         android:textAllCaps="false"
         app:layout_constraintTop_toBottomOf="@+id/listViewServeur"
@@ -37,7 +37,7 @@
         app:layout_constraintRight_toRightOf="parent"/>
 
     <Button
-        android:id="@+id/buttonQuitterServeur"
+        android:id="@+id/btnQuitter"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:text="Quitter"

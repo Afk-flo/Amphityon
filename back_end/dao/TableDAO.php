@@ -83,7 +83,7 @@ class TableDAO{
 
     public static function affecter($idUser1,$idService,$idUser,$numTable){
         try{
-            $req=bdd::getInstance()->prepare("INSERT INTO AFFECTER VALUES (?,?,?,date(now()),?)");
+            $req=bdd::getInstance()->prepare("INSERT INTO AFFECTER (IDUSER_1,IDSERVICE,IDUSER, DATE1, NUMTABLE) VALUES (?,?,?,date(now()),?)");
             $req->execute(array($idUser1,$idService,$idUser,$numTable));
             $req->fetch(PDO::FETCH_ASSOC);
             return true;
@@ -109,6 +109,18 @@ class TableDAO{
         $req=bdd::getInstance()->prepare("UPDATE AFFECTER SET IDUSER=?, IDSERVICE = ?, DATE = date(now()), NUMTABLE = ?");
         $req->execute(array($idUser,$idService,$numTable));
         $req->fetch(PDO::FETCH_ASSOC);
+    }
+
+    public static function getServeurs(){
+        try{
+            $req=  bdd::getInstance()->prepare("SELECT IDUSER, NOM, PRENOM FROM SERVEUR;");
+            $req->execute();
+            $all = $req->fetchAll(PDO::FETCH_ASSOC);
+            return $all;
+        }
+        catch(Exception $e){
+            return false." ". $e;
+        }
     }
 
 

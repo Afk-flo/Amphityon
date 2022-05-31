@@ -29,11 +29,13 @@
             android:textSize="20sp"
             android:textStyle="bold" />
 
-        <EditText
+        <Spinner
             android:id="@+id/serveur"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/title"
+            android:layout_marginLeft="2dp"
+            android:layout_marginTop="26dp"
             android:layout_toRightOf="@id/textServeur"
             android:inputType="text" />
 
@@ -48,23 +50,24 @@
             android:textStyle="bold"
             android:layout_below="@id/textServeur"/>
 
-        <EditText
+        <Spinner
             android:id="@+id/table"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="text"
-            android:layout_below="@id/textServeur"
-            android:layout_toRightOf="@id/textTable"/>
-
+            android:layout_below="@id/title"
+            android:layout_marginLeft="2dp"
+            android:layout_marginTop="26dp"
+            android:layout_toRightOf="@id/textTable"
+            android:inputType="text" />
         <Button
             android:id="@+id/btnEnregistrer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_below="@id/table"
             android:layout_marginTop="75dp"
-            android:text="Enregistrer"
+            android:text="Modifier"
             android:textSize="25sp"
-            android:textStyle="bold"
-            android:layout_below="@id/table"/>
+            android:textStyle="bold" />
 
 
         <Button
@@ -79,11 +82,11 @@
             />
 
         <Button
-            android:id="@+id/Retour"
+            android:id="@+id/btnQuitter"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
-            android:text="Retour"
+            android:text="Quitter"
             android:textSize="25sp"
             android:textStyle="bold"
             android:layout_below="@id/btnSupprimer"

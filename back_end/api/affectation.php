@@ -25,10 +25,9 @@ if (isset($_POST['idService'])) {
         print(json_encode("Une nouvelle table est apparue !"));
     }
     else if (isset($_POST['demande']) && $_POST['demande'] =="modifAffect"){
-        $nbConvive = $_POST['nbConvive'];
         $idService = $_POST['idService'];
         $numTable = $_POST['numTable'];
-        TableDAO::majAffect($idService, $nbConvive, $numTable);
+        TableDAO::majAffect($idService, $numTable);
         print(json_encode("une table modifiée pour les touristes!"));
     }
 
@@ -39,6 +38,10 @@ if (isset($_POST['idService'])) {
         TableDAO::suppAffect($idService,$idUser,$numTable);
         print(json_encode("finito la table"));
     }
+}
+else if (isset($_POST['demande']) && $_POST['demande']=="getServeurs"){
+    $serveurs = TableDAO::getServeurs();
+    printf(json_encode($serveurs));
 }
 else{
     header("HTTP/1.0 405 Method Not Allowed");
