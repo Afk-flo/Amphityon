@@ -27,13 +27,14 @@ import okhttp3.Response;
 public class MainActivity extends AppCompatActivity {
     String responseStr;
     OkHttpClient client = new OkHttpClient();
+    int id = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        final Button buttonValiderAuthentification = (Button)findViewById(R.id.buttonValiderAuthentification);
+        final Button buttonValiderAuthentification = findViewById(R.id.buttonValiderAuthentification);
         buttonValiderAuthentification.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -68,7 +69,11 @@ public class MainActivity extends AppCompatActivity {
                 .build();
 
         Request request = new Request.Builder()
+<<<<<<< HEAD
+                .url("http://192.168.1.94/apjy2/Amphityon/back_end/api/login.php")
+=======
                 .url("http://192.168.56.1/Amphityon/back_end/api/login.php")
+>>>>>>> main
                 .post(formBody)
                 .build();
 
@@ -83,9 +88,14 @@ public class MainActivity extends AppCompatActivity {
                     try{
                         JSONObject user = new JSONObject(responseStr);
                         Log.d("Test",user.getString("NOM") + " est  connecté");
+<<<<<<< HEAD
+                        if(user.getString("FONCTION").equals("SALLE")) {
+                            Intent intent = new Intent(MainActivity.this, Menu_ChoixService.class);
+=======
                         Log.d("AZDJOAZDJZDADAZDKLAZD", user.getString("FONCTION"));
                         if(user.getString("FONCTION").equals("SALLE")) {
                             Intent intent = new Intent(MainActivity.this, MenuChefSalle.class);
+>>>>>>> main
                             intent.putExtra("user", user.toString());
                             startActivity(intent);
                         }
@@ -96,7 +106,6 @@ public class MainActivity extends AppCompatActivity {
                         }
                     } catch (JSONException e) {
                         e.printStackTrace();
-                        //Toast.makeText(MainActivity.this, "Erreur de connexion !!!! !", Toast.LENGTH_SHORT).show();
                     }
                 }
                 else {

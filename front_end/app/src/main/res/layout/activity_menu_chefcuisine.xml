@@ -47,6 +47,8 @@
         app:layout_constraintTop_toBottomOf="@+id/btnPlats"
         app:layout_constraintLeft_toLeftOf="@+id/btnPlats" />
 
+<<<<<<< HEAD
+=======
     <Button
         android:id="@+id/btnQtt"
         android:layout_width="200dp"
@@ -62,4 +64,5 @@
 
 
 
+>>>>>>> main
 </androidx.constraintlayout.widget.ConstraintLayout>

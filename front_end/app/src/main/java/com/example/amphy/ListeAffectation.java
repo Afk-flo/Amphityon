@@ -1,5 +1,8 @@
 package com.example.amphy;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -8,9 +11,6 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
-
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -27,23 +27,23 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 
-public class Menu_Table extends AppCompatActivity {
-    JSONObject user;
+public class ListeAffectation extends AppCompatActivity {
+    JSONObject user = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_menu_table);
-<<<<<<< HEAD
+        setContentView(R.layout.activity_liste_affectation);
         int idService=0;
         idService = getIntent().getIntExtra("idService",idService);
+
         int finalIdService = idService;
 
-        Button btnAjout = findViewById(R.id.btnAjoutTable);
+        Button btnAjout = findViewById(R.id.btnAjoutAffect);
         btnAjout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Menu_Table.this, AjoutTable.class);
+                Intent intent = new Intent(ListeAffectation.this, AjoutAffectation.class);
                 intent.putExtra("idService", finalIdService);
                 try {
                     JSONObject user = new JSONObject(getIntent().getStringExtra("user"));
@@ -61,36 +61,32 @@ public class Menu_Table extends AppCompatActivity {
         btnQuitter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Menu_Table.this.finish();
+                ListeAffectation.this.finish();
             }
         });
 
 
         try {
             Log.d("test","coucou");
-            listeTables(idService);
+            listeAffect(idService);
         }
         catch (IOException e) {
             e.printStackTrace();
             Log.d("test",e.getMessage());
         }
-=======
-
-
->>>>>>> main
     }
 
-    public void listeTables(int unService) throws IOException {
+    public void listeAffect(int unService) throws IOException {
         OkHttpClient client = new OkHttpClient();
-        ArrayList listTables = new ArrayList<String>();
+        ArrayList listAffectation = new ArrayList<String>();
         RequestBody formBody = new FormBody.Builder()
                 .add("REQUEST_METHOD","POST")
-                .add("demande","lesTables")
+                .add("demande","lesAffectations")
                 .add("idService", String.valueOf(unService))
                 .build();
 
         Request request = new Request.Builder()
-                .url("http://192.168.1.94/apjy2/Amphityon/back_end/api/table.php/demande")
+                .url("http://192.168.1.94/apjy2/Amphityon/back_end/api/affectation.php")
                 .post(formBody)
                 .build();
 
@@ -101,40 +97,44 @@ public class Menu_Table extends AppCompatActivity {
             @Override
             public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
                 String responseStr = response.body().string();
-                JSONArray jsonArrayTables = null;
+                JSONArray jsonArrayAffect = null;
                 Log.d("test",responseStr);
                 try {
-                    jsonArrayTables = new JSONArray(responseStr);
-                    for(int i=0; i<jsonArrayTables.length();i++){
-                        JSONObject jsonTable;
-                        jsonTable = jsonArrayTables.getJSONObject(i);
-                        listTables.add(jsonTable.getString("NUMTABLE"));
+                    jsonArrayAffect = new JSONArray(responseStr);
+                    for(int i=0; i<jsonArrayAffect.length();i++){
+                        JSONObject jsonAffect;
+                        jsonAffect = jsonArrayAffect.getJSONObject(i);
+                        listAffectation.add(jsonAffect.getString("NOM"));
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
                     Log.d("test",e.getMessage());
                 }
 
-                ListView listViewTables = findViewById(R.id.listViewTables);
+                ListView listViewAffect = findViewById(R.id.listViewServeur);
 
-                ArrayAdapter<String> arrayAdapterTables = new ArrayAdapter<String>(Menu_Table.this, android.R.layout.simple_list_item_1, listTables);
+                ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(ListeAffectation.this, android.R.layout.simple_list_item_1, listAffectation);
 
                 runOnUiThread(() -> {
-                    listViewTables.setAdapter(arrayAdapterTables);
+                    listViewAffect.setAdapter(arrayAdapter);
                 });
 
-                JSONArray finalJsonArrayTables = jsonArrayTables;
+                JSONArray finalJsonArrayTables = jsonArrayAffect;
 
-                listViewTables.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                listViewAffect.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
                         try{
                             int idService = 0;
                             idService = getIntent().getIntExtra("idService",idService);
-                            JSONObject uneTable = finalJsonArrayTables.getJSONObject(position);
-                            Intent intent = new Intent(Menu_Table.this, AfficheTable.class);
-                            intent.putExtra("uneTable",uneTable.toString());
+                            JSONObject user = null;
+                            user = new JSONObject(getIntent().getStringExtra("user"));
+
+                            JSONObject uneAffect = finalJsonArrayTables.getJSONObject(position);
+                            Intent intent = new Intent(ListeAffectation.this, AfficheAffect.class);
+                            intent.putExtra("uneAffect",uneAffect.toString());
                             intent.putExtra("idService",idService);
+                            intent.putExtra("user", user.toString());
                             startActivity(intent);
                         } catch (JSONException e) {
                             e.printStackTrace();
