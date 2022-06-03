@@ -13,21 +13,21 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Amphy">
         <activity
-<<<<<<< HEAD
-            android:name=".AjoutAffectation"
+            android:name=".ServiceUnique"
             android:exported="false" />
         <activity
-            android:name=".AfficheAffect"
+            android:name=".ServiceModification"
             android:exported="false" />
         <activity
-            android:name=".ListeAffectation"
+            android:name=".ChoixServiceDeux"
             android:exported="false" />
         <activity
-            android:name=".AjoutTable"
+            android:name=".ChoixServicePremier"
             android:exported="false" />
         <activity
-            android:name=".AfficheTable"
-=======
+            android:name=".CreationPlat"
+            android:exported="false" />
+        <activity
             android:name=".PlatUnique"
             android:exported="false" />
         <activity
@@ -38,7 +38,6 @@
             android:exported="false" />
         <activity
             android:name=".Plats"
->>>>>>> main
             android:exported="false" />
         <activity
             android:name=".Menu_Table"
@@ -48,9 +47,6 @@
             android:exported="false" />
         <activity
             android:name=".MenuChefCuisine"
-            android:exported="false" />
-        <activity
-            android:name=".Menu_ChoixService"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

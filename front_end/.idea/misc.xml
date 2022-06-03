@@ -3,6 +3,16 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Flo/Desktop/amphi/front_end/app/src/main/res/layout/activity_choix_service_deux.xml" value="0.2638888888888889" />
+        <entry key="..\:/Users/Flo/Desktop/amphi/front_end/app/src/main/res/layout/activity_choix_service_premier.xml" value="0.1" />
+        <entry key="..\:/Users/Flo/Desktop/amphi/front_end/app/src/main/res/layout/activity_creation_plat.xml" value="0.25" />
+        <entry key="..\:/Users/Flo/Desktop/amphi/front_end/app/src/main/res/layout/activity_menu_chefcuisine.xml" value="0.13333333333333333" />
+        <entry key="..\:/Users/Flo/Desktop/amphi/front_end/app/src/main/res/layout/activity_menu_chefsalle.xml" value="0.1717325227963526" />
+        <entry key="..\:/Users/Flo/Desktop/amphi/front_end/app/src/main/res/layout/activity_plat_unique.xml" value="0.2695035460992908" />
+        <entry key="..\:/Users/Flo/Desktop/amphi/front_end/app/src/main/res/layout/activity_plats.xml" value="0.2695035460992908" />
+        <entry key="..\:/Users/Flo/Desktop/amphi/front_end/app/src/main/res/layout/activity_service.xml" value="0.25" />
+        <entry key="..\:/Users/Flo/Desktop/amphi/front_end/app/src/main/res/layout/activity_service_modification.xml" value="0.24537037037037038" />
+        <entry key="..\:/Users/Flo/Desktop/amphi/front_end/app/src/main/res/layout/activity_service_unique.xml" value="0.24537037037037038" />
         <entry key="..\:/xampp/htdocs/Amphityon/front_end/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1805" />
         <entry key="..\:/xampp/htdocs/Amphityon/front_end/app/src/main/res/layout/activity_access_plat.xml" value="0.36666666666666664" />
         <entry key="..\:/xampp/htdocs/Amphityon/front_end/app/src/main/res/layout/activity_main.xml" value="0.176" />
@@ -14,17 +24,6 @@
         <entry key="..\:/xampp/htdocs/Amphityon/front_end/app/src/main/res/layout/activity_serveur.xml" value="0.1936725096194955" />
         <entry key="..\:/xampp/htdocs/Amphityon/front_end/app/src/main/res/layout/activity_service.xml" value="0.36666666666666664" />
         <entry key="..\:/xampp/htdocs/Amphityon/front_end/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1805" />
-        <entry key="..\:/xampp/htdocs/apjy2/Amphityon/front_end/app/src/main/res/layout/activity_affiche_affect.xml" value="0.25" />
-        <entry key="..\:/xampp/htdocs/apjy2/Amphityon/front_end/app/src/main/res/layout/activity_affiche_table.xml" value="0.25" />
-        <entry key="..\:/xampp/htdocs/apjy2/Amphityon/front_end/app/src/main/res/layout/activity_ajout_affectation.xml" value="0.25" />
-        <entry key="..\:/xampp/htdocs/apjy2/Amphityon/front_end/app/src/main/res/layout/activity_ajout_table.xml" value="0.2" />
-        <entry key="..\:/xampp/htdocs/apjy2/Amphityon/front_end/app/src/main/res/layout/activity_liste_affectation.xml" value="0.12158054711246201" />
-        <entry key="..\:/xampp/htdocs/apjy2/Amphityon/front_end/app/src/main/res/layout/activity_main.xml" value="0.1" />
-        <entry key="..\:/xampp/htdocs/apjy2/Amphityon/front_end/app/src/main/res/layout/activity_menu_chefcuisine.xml" value="0.25" />
-        <entry key="..\:/xampp/htdocs/apjy2/Amphityon/front_end/app/src/main/res/layout/activity_menu_chefsalle.xml" value="0.25" />
-        <entry key="..\:/xampp/htdocs/apjy2/Amphityon/front_end/app/src/main/res/layout/activity_menu_choix_service.xml" value="0.25" />
-        <entry key="..\:/xampp/htdocs/apjy2/Amphityon/front_end/app/src/main/res/layout/activity_menu_serveur.xml" value="0.25" />
-        <entry key="..\:/xampp/htdocs/apjy2/Amphityon/front_end/app/src/main/res/layout/activity_menu_table.xml" value="0.25" />
       </map>
     </option>
   </component>

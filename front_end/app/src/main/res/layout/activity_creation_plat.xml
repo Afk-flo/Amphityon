@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CreationPlat">
+
+    <TextView
+        android:id="@+id/titleFood"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Création d'un plat unique"
+        android:visibility="visible"
+        app:layout_constraintHorizontal_bias="0.296"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tVnom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:text="Nom du plat"
+        app:layout_constraintLeft_toLeftOf="@+id/titleFood"
+        app:layout_constraintTop_toBottomOf="@+id/titleFood" />
+
+    <EditText
+        android:id="@+id/nomtext"
+        android:layout_width="200dp"
+        android:layout_height="70dp"
+        android:layout_marginLeft="4dp"
+        android:layout_marginTop="240dp"
+        android:inputType="text"
+        android:textSize="18sp"
+        app:layout_constraintLeft_toLeftOf="@+id/tVnom"
+        app:layout_constraintTop_toBottomOf="@+id/tVnom" />
+
+    <TextView
+        android:id="@+id/DescriptionInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginLeft="200dp"
+        android:layout_marginTop="120dp"
+        android:text="Description du plat"
+        android:textSize="18sp"
+        app:layout_constraintLeft_toLeftOf="@+id/desctext"
+        app:layout_constraintTop_toBottomOf="@+id/desctext" />
+
+    <EditText
+        android:id="@+id/desctext"
+        android:layout_width="66dp"
+        android:layout_height="294dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="144dp"
+        android:inputType="text"
+        android:textSize="18sp"
+        app:layout_constraintLeft_toLeftOf="@+id/DescriptionInfo"
+        app:layout_constraintTop_toBottomOf="@+id/DescriptionInfo" />
+
+    <RadioGroup
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:id="@+id/radioGroup"
+        tools:ignore="MissingConstraints">
+
+        <RadioButton
+            android:id="@+id/rDessert"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Dessert"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteX="12dp"
+            tools:layout_editor_absoluteY="500dp" />
+
+        <RadioButton
+            android:id="@+id/rEntree"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Entrée"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteX="152dp"
+            tools:layout_editor_absoluteY="499dp" />
+
+        <RadioButton
+            android:id="@+id/rPlat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Plat"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteX="273dp"
+            tools:layout_editor_absoluteY="477dp" />
+
+    </RadioGroup>
+
+
+    <Button
+        android:id="@+id/buttonEnvoie"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="SAUVEGARDER"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/buttonRetour"
+        app:layout_constraintTop_toTopOf="@+id/buttonRetour" />
+
+    <Button
+        android:id="@+id/buttonRetour"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="632dp"
+        android:text="SUPPRIMER"
+        app:layout_constraintEnd_toStartOf="@+id/bttonEnvoie"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
