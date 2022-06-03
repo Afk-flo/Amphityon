@@ -4,6 +4,9 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/Amphy.iml" filepath="$PROJECT_DIR$/.idea/modules/Amphy.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Amphy.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Amphy.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Amphy.app.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Amphy.app.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Amphy.app.main.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Amphy.app.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Amphy.app.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Amphy.app.unitTest.iml" />
     </modules>
   </component>
 </project>
